@@ -1,10 +1,11 @@
+# -*- coding: utf-8 -*-
 import csv
 import os
 import re
 
 
 # key 必须为 csv 文件第一列第一个元素
-# TODO 边读边写？减少内存使用
+# 边读边写？减少内存使用
 #
 #
 
@@ -38,7 +39,6 @@ def readCSV(filepath):
     # filepath csv文件的路径包括文件名后缀
     with open(filepath, newline='\n') as csvfile:
         (name, ext) = os.path.splitext(filepath)
-        print(os.path.splitext(filepath))
         reader = csv.DictReader(csvfile)
         # dict 的内容： {"en": {"{key}": "{content}"}, "ja": {"{key}": "{content}"}}
         dict = {}
@@ -57,4 +57,4 @@ def readCSV(filepath):
         pass
 
 
-readCSV('pin.csv')
+readCSV('lll.csv')
