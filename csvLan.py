@@ -9,8 +9,17 @@ import re
 #
 #
 
+KeyString = "Key"
+# newLine="\n"
+new_line = "\n"
 
-def convertToSwift(dict, filename):
+
+def save(strings, filename):
+
+    pass
+
+
+def convertToiOS(dict, filename):
     # dict 内容 {"en": {"{key}": "{content}"}, "ja": {"{key}": "{content}"}}
     # 文件内容，list 为每行文字的数组
     for key in dict.keys():
@@ -37,24 +46,24 @@ def convertToSwift(dict, filename):
 
 def readCSV(filepath):
     # filepath csv文件的路径包括文件名后缀
-    with open(filepath, newline='\n') as csvfile:
+    with open(filepath, newline="\n") as csvfile:
         (name, ext) = os.path.splitext(filepath)
         reader = csv.DictReader(csvfile)
         # dict 的内容： {"en": {"{key}": "{content}"}, "ja": {"{key}": "{content}"}}
         dict = {}
         for key in reader.fieldnames:
-            if key == 'key':
+            if key == KeyString:
                 continue
             dict[key] = {}
 
         for row in reader:
             for key in dict.keys():
-                dict[key][row['key']] = row[key]
+                dict[key][row[KeyString]] = row[key]
 
-        convertToSwift(dict, name)
+        convertToiOS(dict, name)
 
         return dict
         pass
 
 
-readCSV('lll.csv')
+readCSV('data-9.csv')
